@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'videorequest/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'videorequest/style.css' %}">
+    <title>Form for Video Request</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- <div class="jumbotron">
+            <h2>Form for Video Request</h2>
+        </div> -->
+        <form class="form-signin" action="{% url 'vrform' %}" method="POST">
+            {% csrf_token  %}
+
+            <h4 class="form-signin-heading">Add your video request here</h4>
+
+            <div class="form-group">
+                <label for="title" class="sr-only">Video Title :</label>
+                <!-- <input type="text" class="form-control" id="title" placeholder="Title here"> -->
+                {{form.videoname}}
+                <!--  videoname from forms.py and form is context passed -->
+            </div>
+
+            <div class="form-group">
+                <label for="description" class="sr-only">Descriptions :</label>
+                <!-- <textarea class="form-control" placeholder="Description here" name="desc" id="desc" rows="8"></textarea> -->
+                {{form.videodesc}}
+            </div>
+
+            <button class="btn btn-lg btn-success btn-block" type="submit" data-toggle="tooltip" data-placement="top"
+                title="Submit the requested video">Submit</button>
+
+        </form>
+    </div>
+</body>
+
+</html>
